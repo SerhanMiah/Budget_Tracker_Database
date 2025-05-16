@@ -1,8 +1,17 @@
 # Design Document
 
-By YOUR NAME HERE
+  # 💰 Budget Tracker Database
 
-Video overview: <URL HERE>
+  **Author:** Serhan Miah  
+  **Course:** Harvard CS50 SQL Track  
+  **Video Overview:** *[Insert Video URL Here]* 
+
+
+   ## 📌 Project Overview
+
+  The Budget Tracker Database is a personal finance management system that enables users to track their expenses, income, budgets, savings goals, and recurring financial obligations. Inspired by common personal finance needs and budgeting applications, the project is implemented entirely in SQLite. It serves as a backend database capable of supporting a frontend client or command-line interface in the future.
+
+  This project was built as the final submission for CS50’s Introduction to Databases with SQL. It demonstrates normalized schema design, relational integrity, foreign key constraints, joins, filtering, and aggregation.
 
 ## Scope
 
