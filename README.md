@@ -13,22 +13,76 @@
 
   This project was built as the final submission for CS50’s Introduction to Databases with SQL. It demonstrates normalized schema design, relational integrity, foreign key constraints, joins, filtering, and aggregation.
 
-## Scope
+  ## Motivation
+    
+  Personal financial health is a core part of many people’s lives, yet many struggle to stay on top of their budgeting, bills, and savings. While many applications exist for tracking finances, designing such a system from scratch offered an opportunity to deeply explore relational database principles, such as:
 
-In this section you should answer the following questions:
+  - Managing multiple types of financial records (transactions, recurring payments, budgets).
 
-* What is the purpose of your database?
-* Which people, places, things, etc. are you including in the scope of your database?
-* Which people, places, things, etc. are *outside* the scope of your database?
+  - Modeling user behavior and constraints.
 
-## Functional Requirements
+  - Building queries that provide real insights (budget vs. actual spend, goal progress).
 
-In this section you should answer the following questions:
+  - Ensuring data integrity with foreign keys and proper normalization.
 
-* What should a user be able to do with your database?
-* What's beyond the scope of what a user should be able to do with your database?
+  - The goal was to build something useful, scalable, and extensible, while applying what I learned about SQL schema design and query writing.
 
-## Representation
+ ## 📦 Scope
+
+  **Purpose:**  
+  The purpose of this database is to empower users to make informed financial decisions by providing tools to monitor spending, plan budgets, and manage recurring financial commitments.
+
+  **Included in Scope:**  
+  - Individual users tracking personal finances  
+  - Transactions (income and expenses)  
+  - Budgets categorized by month  
+  - Recurring payments like subscriptions  
+  - Savings goals  
+  - Payment methods (e.g., bank, card, cash)
+
+  **Outside the Scope:**  
+  - Real-time banking API integration  
+  - Multi-user or enterprise support  
+  - Investment or trading features  
+  - User authentication/login system  
+  - Multi-currency support
+
+  ---
+
+## ✅ Functional Requirements
+
+  **What Users Can Do:**
+  - Add and categorize transactions  
+  - Set and track monthly budgets  
+  - Monitor spending vs. budget  
+  - Manage recurring payments (e.g., subscriptions)  
+  - Define and track savings goals  
+  - Record payment methods used
+
+  **What Users Cannot Do:**
+  - Sync directly with banks or credit cards  
+  - Use multiple currencies  
+  - Authenticate into personal accounts  
+  - Analyze investments or predict future spending
+
+  ---
+  ## 🧱 Representation
+
+  ### Entities
+
+  The database includes the following entities:
+
+  - `Users`: Stores information about individuals using the tracker  
+  - `Transactions`: Records of income or expense entries  
+  - `Categories`: Classification of transactions (e.g., Rent, Salary)  
+  - `Budgets`: Monthly allocated amounts per category  
+  - `Contracts`: Ongoing commitments like rent or subscriptions  
+  - `Recurring_Transactions`: Automatically repeating transactions  
+  - `Goals`: User-defined savings targets  
+  - `Payment_Methods`: Source of payments (e.g., Credit Card, Bank Transfer)
+
+  ## 🧩 Database Schema
+
 
 ### Entities
 
