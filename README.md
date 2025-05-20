@@ -1,4 +1,4 @@
-# Design Document
+# Budget Tracker Database
 
   # 💰 Budget Tracker Database
 
@@ -83,19 +83,41 @@
 
   ## 🧩 Database Schema
 
+  ### Tables and Key Fields
 
-### Entities
+  | Table                | Key Fields                                                                 |
+  |----------------------|----------------------------------------------------------------------------|
+  | Users              | id, name                                                               |
+  | Transactions       | id, user_id, category_id, amount, description, transaction_date |
+  | Categories         | id, name, type (income or expense), description               |
+  | Budgets            | id, user_id, category_id, month, amount                         |
+  | Contracts          | id, user_id, category_id, name, start_date, end_date, monthly_amount, description |
+  | RecurringTransactions | id, user_id, category_id, amount, frequency, start_date    |
+  | Goals              | id, user_id, category_id, name, target_amount, current_amount, deadline |
+  | PaymentMethods     | id, user_id, name, type                                           |
 
-In this section you should answer the following questions:
+  - **Primary keys** are integers.
+  - **Foreign keys** maintain data integrity between tables (e.g., user_id, category_id).
 
-* Which entities will you choose to represent in your database?
-* What attributes will those entities have?
-* Why did you choose the types you did?
-* Why did you choose the constraints you did?
 
-### Relationships
+  **Types and Constraints:**  
+  - `INTEGER PRIMARY KEY` for unique identifiers  
+  - `TEXT` for names and descriptions  
+  - `REAL` for financial values  
+  - `DATE` or `TEXT` (formatted as YYYY-MM-DD) for dates  
+  - `CHECK` constraints to ensure valid types (e.g., only "income" or "expense")
+
+  ### Relationships
+
+  - A `User` can have many `Transactions`, `Budgets`, `Contracts`, `Recurring_Transactions`, `Goals`, and `Payment_Methods`.  
+  - Every `Transaction`, `Budget`, and `Contract` is linked to a `Category`.  
+  - Foreign keys ensure relational integrity across the database.
 
 In this section you should include your entity relationship diagram and describe the relationships between the entities in your database.
+
+
+**Entity Relationship Diagram:**  
+![ER Diagram](EDR_budget_tracker.png)
 
 ## Optimizations
 
