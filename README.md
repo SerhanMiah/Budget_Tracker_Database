@@ -217,9 +217,9 @@ I have attached a Entity Relationship Diagram created using mermaid.js
   SELECT * FROM Transactions;
   SELECT * FROM Budgets;
   SELECT * FROM Contracts;
-  SELECT * FROM RecurringTransactions;
+  SELECT * FROM recurring_transactions;
   SELECT * FROM Goals;
-  SELECT * FROM PaymentMethods;
+  SELECT * FROM payment_methods;
   ```
 
   ---
@@ -230,14 +230,14 @@ If you want to reset your database schema, you can drop all tables in a dependen
 
 
   ```sql
-DROP TABLE IF EXISTS RecurringTransactions;
-DROP TABLE IF EXISTS Goals;
-DROP TABLE IF EXISTS Contracts;
-DROP TABLE IF EXISTS Transactions;
-DROP TABLE IF EXISTS Budgets;
-DROP TABLE IF EXISTS PaymentMethods;
-DROP TABLE IF EXISTS Categories;
-DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS recurring_transactions;
+DROP TABLE IF EXISTS goals;
+DROP TABLE IF EXISTS contracts;
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS budgets;
+DROP TABLE IF EXISTS payment_methods;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS users;
   ```
 
 

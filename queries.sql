@@ -108,5 +108,56 @@ ORDER BY t.transaction_date DESC;
 -- CRUD 
 -- CREATE, READ, UPDATE, DELETE
 
+INSERT INTO transactions (
+    user_id,
+    category_id,
+    amount,
+    transaction_date,
+    payment_method_id,
+    description
+) VALUES (
+    1,              -- user_id
+    2,              -- category_id (must exist in categories)
+    45.99,         -- amount
+    DATE('now'),    -- transaction_date
+    1,              -- payment_method_id (must exist in payment_methods or be NULL)
+    'Grocery shopping'
+);
 
+
+-- ==============================================
+-- 9. Update Budget for a Category in a Given Month
+UPDATE budgets
+SET amount = :new_amount
+WHERE user_id = :user_id
+  AND category_id = :category_id
+  AND month = :month;
+
+-- ==============================================
+-- 10. Delete a Transaction
+DELETE FROM transactions
+WHERE user_id = :user_id
+  AND id = :transaction_id;
+
+-- ==============================================
+-- 11. Add New Monthly Budget
+INSERT INTO budgets (
+    user_id,
+    category_id,
+    amount,
+    month
+) VALUES (
+    1,             -- user_id
+    2,             -- category_id (must exist)
+    200.00,        -- amount
+    strftime('%Y-%m', 'now')  -- current month
+);
+
+
+-- ==============================================
+-- 12. Update Payment Method Info
+UPDATE payment_methods
+SET name = :new_name,
+    type = :new_type
+WHERE id = :payment_method_id;
 
