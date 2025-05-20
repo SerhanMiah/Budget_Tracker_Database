@@ -3,7 +3,8 @@
 -- ========================================
 
 -- =================
--- USERS
+-- USERS - CREATE VALUES INSIDE INDIVIDUAL TABLES
+
 INSERT INTO users (id, name) VALUES
 (1, 'Serhan');
 

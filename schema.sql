@@ -3,6 +3,7 @@
 
 -- Creating the database schema 
 -- Table will need a way to identify user. 
+-- CREATING
 
 CREATE TABLE users (
   id INTEGER,
@@ -130,3 +131,6 @@ CREATE TABLE payment_methods (
 CREATE INDEX idx_transactions_user_date ON transactions(user_id, transaction_date);
 CREATE INDEX idx_budgets_user_month ON budgets(user_id, month);
 CREATE INDEX idx_recurring_user_start ON recurring_transactions(user_id, start_date);
+
+
+

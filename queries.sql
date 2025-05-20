@@ -4,6 +4,8 @@
 -- 
 .mode box
 
+
+-- READ
 -- sql - SELECTS all the tables in the database
   SELECT * FROM Users;
   SELECT * FROM Categories;
@@ -102,6 +104,9 @@ WHERE t.user_id = 1
   AND strftime('%Y-%m', t.transaction_date) = strftime('%Y-%m', 'now')
 ORDER BY t.transaction_date DESC;
 
+
+-- CRUD 
+-- CREATE, READ, UPDATE, DELETE
 
 
 

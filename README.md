@@ -113,21 +113,157 @@
   - Every `Transaction`, `Budget`, and `Contract` is linked to a `Category`.  
   - Foreign keys ensure relational integrity across the database.
 
-In this section you should include your entity relationship diagram and describe the relationships between the entities in your database.
-
+I have attached a Entity Relationship Diagram created using mermaid.js
 
 **Entity Relationship Diagram:**  
 ![ER Diagram](EDR_budget_tracker.png)
 
-## Optimizations
+## ⚙️ Optimizations
 
-In this section you should answer the following questions:
+  **Indexes & Views:**
+  - Indexes were added on foreign keys (e.g., `user_id`, `category_id`) for faster joins and queries.
+  These optimizations ensure smooth performance even as the database scales with additional data.
 
-* Which optimizations (e.g., indexes, views) did you create? Why?
+  ---
 
-## Limitations
+  ## 🚫 Limitations
 
-In this section you should answer the following questions:
+  - **No Real-Time Sync:** Users must enter all data manually.
+  - **No Multi-User Accounts:** Each user is isolated; no support for shared accounts.
+  - **No Forecasting:** Budgeting is based on existing data only, with no predictive features.
+  - **Not Designed for Businesses:** This tool is optimized for individuals, not for business accounting or complex financial models.
 
-* What are the limitations of your design?
-* What might your database not be able to represent very well?
+  ---
+
+  ## ⚙️ Getting Started
+
+  # 🧾 SQLite Setup Guide
+
+  This guide walks you through setting up and interacting with the **Budget Tracker Database** using SQLite.
+
+  ---
+
+  ## 1. Launch SQLite
+
+  Open a terminal and run:
+
+  ```bash
+  sqlite3 budget.db
+  ```
+
+  This opens or creates the `budget.db` SQLite database file.
+
+  ---
+
+  ## 2. Insert Sample Data
+
+  Here are some example SQL statements to populate the database manually:
+
+  ```sql
+  -- Insert a user
+  INSERT INTO Users (name) VALUES ('Serhan Miah');
+
+  -- Insert a category
+  INSERT INTO Categories (name, type, description)
+  VALUES ('Groceries', 'expense', 'Weekly grocery shopping');
+
+  -- Insert a transaction
+  INSERT INTO Transactions (user_id, category_id, amount, description, transaction_date)
+  VALUES (1, 1, 150.00, 'Grocery shopping at local store', '2025-05-12');
+
+  -- Insert a budget
+  INSERT INTO Budgets (user_id, category_id, month, amount)
+  VALUES (1, 1, '2025-05', 200.00);
+
+  -- Insert a contract/subscription
+  INSERT INTO Contracts (user_id, category_id, name, start_date, end_date, monthly_amount, description)
+  VALUES (1, 2, 'Streaming Service Subscription', '2025-01-01', '2025-12-31', 15.00, 'Monthly subscription for streaming service');
+  ```
+
+  ---
+
+  ## 3. Load Predefined Data
+
+  To populate the database using a file like `seed.sql`, use:
+
+  ```bash
+  .read seed.sql
+  ```
+
+  This will execute all SQL statements in `seed.sql`.
+
+  ---
+
+  ## 4. Load and Run Queries
+
+  To execute predefined queries from a file (e.g., `queries.sql`):
+
+  ```bash
+  .mode box
+  .read queries.sql
+  ```
+
+  Using `.mode box` improves output formatting for better readability.
+
+  ---
+
+  ## 5. View Data in Tables
+
+  Run SQL queries to inspect data in your tables:
+
+  ```sql
+  SELECT * FROM Users;
+  SELECT * FROM Categories;
+  SELECT * FROM Transactions;
+  SELECT * FROM Budgets;
+  SELECT * FROM Contracts;
+  SELECT * FROM RecurringTransactions;
+  SELECT * FROM Goals;
+  SELECT * FROM PaymentMethods;
+  ```
+
+  ---
+
+
+  ## 6. Drop All Tables (Reset Database)
+If you want to reset your database schema, you can drop all tables in a dependency-safe order like this:
+
+
+  ```sql
+DROP TABLE IF EXISTS RecurringTransactions;
+DROP TABLE IF EXISTS Goals;
+DROP TABLE IF EXISTS Contracts;
+DROP TABLE IF EXISTS Transactions;
+DROP TABLE IF EXISTS Budgets;
+DROP TABLE IF EXISTS PaymentMethods;
+DROP TABLE IF EXISTS Categories;
+DROP TABLE IF EXISTS Users;
+  ```
+
+
+  ## 7. Exit SQLite
+
+  When you're done, type:
+
+  ```bash
+  .quit
+  ```
+
+  ---
+
+  ## 📈 Future Improvements (Optional Ideas)
+
+  - 🔐 Add user authentication
+  - 🌐 Build a web interface with Flask or Django
+  - 💹 Add investment and prediction modules
+  - 🌍 Add multi-currency and exchange rate support
+  - 📱 Connect to mobile budgeting apps or banks via API
+
+  ---
+
+  ## 🎓 Credits
+
+  Created as part of the [Harvard CS50 SQL Track](https://cs50.harvard.edu/sql/)  
+  Author: Serhan Miah  
+  Date: May 2025
+
