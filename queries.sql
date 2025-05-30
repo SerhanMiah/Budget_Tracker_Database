@@ -1,7 +1,7 @@
 -- In this SQL file, write (and comment!) the typical SQL queries users will run on your database
 
   -- Run SQL queries to inspect data in your tables:
--- 
+-- a way to see the data in your tables easier it is a good idea to use the .mode box command.
 .mode box
 
 
@@ -106,8 +106,9 @@ ORDER BY t.transaction_date DESC;
 
 
 -- CRUD 
--- CREATE, READ, UPDATE, DELETE
-
+---- ==============================================
+-- 8. Insert a New Transaction
+-- This adds a transaction to the 'transactions' table
 INSERT INTO transactions (
     user_id,
     category_id,
@@ -116,17 +117,17 @@ INSERT INTO transactions (
     payment_method_id,
     description
 ) VALUES (
-    1,              -- user_id
-    2,              -- category_id (must exist in categories)
-    45.99,         -- amount
-    DATE('now'),    -- transaction_date
-    1,              -- payment_method_id (must exist in payment_methods or be NULL)
+    1,              -- Existing user_id
+    2,              -- Existing category_id
+    45.99,          -- Amount spent
+    DATE('now'),    -- Today's date
+    1,              -- Existing payment_method_id
     'Grocery shopping'
 );
 
-
 -- ==============================================
 -- 9. Update Budget for a Category in a Given Month
+-- Dynamically update a budget entry based on user, category, and month
 UPDATE budgets
 SET amount = :new_amount
 WHERE user_id = :user_id
@@ -135,29 +136,48 @@ WHERE user_id = :user_id
 
 -- ==============================================
 -- 10. Delete a Transaction
+-- Removes a transaction by ID and user
 DELETE FROM transactions
 WHERE user_id = :user_id
   AND id = :transaction_id;
 
 -- ==============================================
 -- 11. Add New Monthly Budget
+-- Inserts a monthly budget for a user and category
 INSERT INTO budgets (
     user_id,
     category_id,
     amount,
     month
 ) VALUES (
-    1,             -- user_id
-    2,             -- category_id (must exist)
-    200.00,        -- amount
-    strftime('%Y-%m', 'now')  -- current month
+    1,
+    2,
+    200.00,
+    strftime('%Y-%m', 'now')
 );
-
 
 -- ==============================================
 -- 12. Update Payment Method Info
+-- Changes the name or type of an existing payment method
 UPDATE payment_methods
 SET name = :new_name,
     type = :new_type
 WHERE id = :payment_method_id;
 
+
+
+-- ==============================================
+-- 13. View Monthly Spending by Category
+SELECT c.name AS category, SUM(t.amount) AS total_spent
+FROM transactions t
+JOIN categories c ON t.category_id = c.id
+WHERE t.user_id = 1
+  AND strftime('%Y-%m', t.transaction_date) = strftime('%Y-%m', 'now')
+GROUP BY c.name;
+
+-- ==============================================
+-- 14. List All Transactions for a User
+SELECT *
+FROM transactions
+WHERE user_id = 1
+ORDER BY transaction_date DESC;

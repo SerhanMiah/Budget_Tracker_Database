@@ -4,7 +4,7 @@
 
   **Author:** Serhan Miah  
   **Course:** Harvard CS50 SQL Track  
-  **Video Overview:** *[Insert Video URL Here]* 
+  **Video Overview:** *https://youtu.be/BlU_4XICYNs* 
 
 
    ## 📌 Project Overview
@@ -167,9 +167,13 @@ I have attached a Entity Relationship Diagram created using mermaid.js
   INSERT INTO Categories (name, type, description)
   VALUES ('Groceries', 'expense', 'Weekly grocery shopping');
 
+  INSERT INTO Categories (name, type, description)
+  VALUES ('Full time job', 'income', 'monthly salary');
+
   -- Insert a transaction
   INSERT INTO Transactions (user_id, category_id, amount, description, transaction_date)
   VALUES (1, 1, 150.00, 'Grocery shopping at local store', '2025-05-12');
+  
 
   -- Insert a budget
   INSERT INTO Budgets (user_id, category_id, month, amount)

@@ -4,7 +4,7 @@
 
   **Author:** Serhan Miah  
   **Course:** Harvard CS50 SQL Track  
-  **Video Overview:** *[Insert Video URL Here]* 
+  **Video Overview:** *https://youtu.be/BlU_4XICYNs* 
 
 
    ## 📌 Project Overview
